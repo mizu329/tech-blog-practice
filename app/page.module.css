@@ -1,4 +1,83 @@
-.page {
+.inner {
+  margin: 0 auto;
+  padding: 0 15%;
+}
+
+.fv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 100px;
+}
+
+.fv h1 {
+  font-size: 50px;
+}
+
+.fvAnimation {
+  width: 190px;
+}
+
+.description {
+  text-align: center;
+  padding-top: 50px;
+}
+
+.introduction {
+  padding-top: 100px;
+}
+
+.introduction p {
+  padding-top: 40px;
+  padding-bottom: 50px;
+}
+
+.articleWrapper {
+  background-color: white;
+  color: black;
+  border-radius: 10px;
+  padding: 60px;
+}
+
+ul.articleList {
+  margin-top: 40px;
+}
+
+ul.articleList li {
+  display: flex;
+}
+
+ul.articleList li + li {
+  margin-top: 25px;
+}
+
+.contact {
+  padding-top: 80px;
+  text-align: center;
+}
+
+.contact h1 {
+  text-align: center;
+}
+
+.contact button {
+  background-color: #ef476f;
+  color: black;
+  font-size: 25px;
+  padding: 8px 100px;
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  margin-top: 24px;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 85px;
+  margin-bottom: 45px;
+}
+
+/* .page {
   --gray-rgb: 0, 0, 0;
   --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
   --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
@@ -106,10 +185,10 @@ a.secondary {
 
 .footer img {
   flex-shrink: 0;
-}
+} */
 
 /* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
+/* @media (hover: hover) and (pointer: fine) {
   a.primary:hover {
     background: var(--button-primary-hover);
     border-color: transparent;
@@ -165,4 +244,4 @@ a.secondary {
   .logo {
     filter: invert();
   }
-}
+} */

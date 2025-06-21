@@ -1,95 +1,112 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
+import Lottie from "lottie-react";
+import shapes from "@/public/animations/shapes.json";
+import { title } from "process";
+
+type Article = {
+  id: string;
+  title: string;
+  category: {
+    name: string;
+  };
+  publishedAt: string;
+  createdAt: string;
+};
+
+const data: {
+  contents: Article[];
+} = {
+  contents: [
+    {
+      id: "1",
+      title: "タイトルタイトルタイトル",
+      category: {
+        name: "カテゴリー名",
+      },
+      publishedAt: "2023-10-01",
+      createdAt: "2023-10-01",
+    },
+    {
+      id: "2",
+      title: "タイトルタイトルタイトル",
+      category: {
+        name: "カテゴリー名",
+      },
+      publishedAt: "2023-10-02",
+      createdAt: "2023-10-01",
+    },
+  ],
+};
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const name = "Design Code";
+  const sliceDate = data.contents.slice(0, 2);
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+  return (
+    <>
+      <section className={`${styles.fv} ${styles.inner}`}>
+        <h1 className={styles.title}>{name}</h1>
+        <Lottie
+          className={styles.fvAnimation}
+          animationData={shapes}
+          loop={true}
+        />
+      </section>
+
+      <section className={`${styles.description} ${styles.inner}`}>
+        <p>WEB関連で気になったトピックをシェアしています。</p>
+      </section>
+
+      <section className={`${styles.introduction} ${styles.inner}`}>
+        <h1>Introduction</h1>
+        <p>
+          デザイナー兼エンジニアとしてWEB、LP、バナーの制作やSTUDIO、ワードプレス、ムーバブルタイプでの構築支援のお手伝いをしてきました。
+          <br />
+          扱える言語はhtml、css、sass、phpです。
+          <br />
+          デザインツールはFigma、XD、Illustrator、 photoshopを扱えます。
+          <br />
+          開発用のエディターはVScodeを使用しています。
+        </p>
+      </section>
+
+      <section className={`${styles.article} ${styles.inner}`}>
+        <div className={styles.articleWrapper}>
+          <h1>Article</h1>
+          <ul className={styles.articleList}>
+            {sliceDate.map((Article) => (
+              <li key={Article.id} className={styles.articleItem}>
+                <div className="">
+                  <Image
+                    src="/images/sample.jpg"
+                    alt="サンプル画像"
+                    width={300}
+                    height={200}
+                  />
+                </div>
+                <dl className={styles.contect}>
+                  <dt className={styles.newsItemTitle}>{Article.title}</dt>
+                  <dd className={styles.meta}>
+                    {Article.category.name} | {Article.publishedAt}
+                  </dd>
+                </dl>
+              </li>
+            ))}
+          </ul>
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </section>
+
+      <section className={`${styles.contact} ${styles.inner}`}>
+        <h1>Contact me</h1>
+        <button>Click here</button>
+      </section>
+
+      <footer className={`${styles.footer} ${styles.inner}`}>
+        <p>@ 2025 Mizuki. All right reserved.</p>
       </footer>
-    </div>
+    </>
   );
 }

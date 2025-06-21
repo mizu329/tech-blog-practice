@@ -1,4 +1,26 @@
 :root {
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+body {
+  background-color: black;
+  color: white;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -39,4 +61,4 @@ a {
   html {
     color-scheme: dark;
   }
-}
+} */
