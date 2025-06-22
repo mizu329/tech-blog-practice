@@ -1,62 +1,39 @@
-"use client";
-
-import Image from "next/image";
 import styles from "./page.module.css";
-import Lottie from "lottie-react";
-import shapes from "@/public/animations/shapes.json";
-import { title } from "process";
 import Link from "next/link";
+import { getArticles } from "@/app/_libs/microcms";
+import { Firstview } from "./components/Firstview";
+import Footer from "./components/Footer";
 
-type Article = {
-  id: string;
-  title: string;
-  category: {
-    name: string;
-  };
-  publishedAt: string;
-  createdAt: string;
-};
+// [
+//   {
+//       "id": "yzswr971ek",
+//       "createdAt": "2025-06-22T07:11:59.087Z",
+//       "updatedAt": "2025-06-22T07:51:49.359Z",
+//       "publishedAt": "2025-06-22T07:11:59.087Z",
+//       "revisedAt": "2025-06-22T07:51:49.359Z",
+//       "title": "Next.jsで技術ブログを作りました",
+//       "body": "<p>Next.jsで技術ブログを作りました</p>",
+//       "category": [
+//           {
+//               "id": "engineering",
+//               "createdAt": "2025-06-22T07:47:52.849Z",
+//               "updatedAt": "2025-06-22T07:47:52.849Z",
+//               "publishedAt": "2025-06-22T07:47:52.849Z",
+//               "revisedAt": "2025-06-22T07:47:52.849Z",
+//               "name": "＃エンジニアリング"
+//           }
+//       ]
+//   }
+// ]
 
-const data: {
-  contents: Article[];
-} = {
-  contents: [
-    {
-      id: "1",
-      title: "タイトルタイトルタイトル",
-      category: {
-        name: "カテゴリー名",
-      },
-      publishedAt: "2023-10-01",
-      createdAt: "2023-10-01",
-    },
-    {
-      id: "2",
-      title: "タイトルタイトルタイトル",
-      category: {
-        name: "カテゴリー名",
-      },
-      publishedAt: "2023-10-02",
-      createdAt: "2023-10-01",
-    },
-  ],
-};
-
-export default function Home() {
+export default async function Home() {
   const name = "Design Code";
-  const sliceDate = data.contents.slice(0, 2);
+  const data = await getArticles();
+  console.log(data);
 
   return (
     <>
-      <section className={`${styles.fv} ${styles.inner}`}>
-        <h1 className={styles.title}>{name}</h1>
-        <Lottie
-          className={styles.fvAnimation}
-          animationData={shapes}
-          loop={true}
-        />
-      </section>
-
+      <Firstview />
       <section className={`${styles.description} ${styles.inner}`}>
         <p>WEB関連で気になったトピックをシェアしています。</p>
       </section>
@@ -78,22 +55,23 @@ export default function Home() {
         <div className={styles.articleWrapper}>
           <h1>Article</h1>
           <ul className={styles.articleList}>
-            {sliceDate.map((Article) => (
-              <li key={Article.id} className={styles.articleItem}>
-                <Link href={`/articles/${Article.id}`}>
-                  <div className="">
-                    <Image
-                      src="/images/sample.jpg"
-                      alt="サンプル画像"
-                      width={300}
-                      height={200}
+            {data.contents.map((article) => (
+              <li key={article.id} className={styles.articleItem}>
+                <Link href={`/articles/${article.id}`}>
+                  {article.thumbnail ? (
+                    <img
+                      src={article.thumbnail.url}
+                      alt={article.title}
+                      className={styles.articleThumbnail}
                     />
-                  </div>
-                  <dl className={styles.contect}>
-                    <dt className={styles.newsItemTitle}>{Article.title}</dt>
-                    <dd className={styles.meta}>
-                      {Article.category.name} | {Article.publishedAt}
-                    </dd>
+                  ) : (
+                    <div className={styles.articleThumbnailPlaceholder}>
+                      No Image
+                    </div>
+                  )}
+                  <dl>
+                    <dt>{article.title}</dt>
+                    <dd>{article.publishedAt}</dd>
                   </dl>
                 </Link>
               </li>
@@ -107,9 +85,7 @@ export default function Home() {
         <button>Click here</button>
       </section>
 
-      <footer className={`${styles.footer} ${styles.inner}`}>
-        <p>@ 2025 Mizuki. All right reserved.</p>
-      </footer>
+      <Footer />
     </>
   );
 }

@@ -3,21 +3,6 @@
   padding: 0 15%;
 }
 
-.fv {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 100px;
-}
-
-.fv h1 {
-  font-size: 50px;
-}
-
-.fvAnimation {
-  width: 190px;
-}
-
 .description {
   text-align: center;
   padding-top: 50px;
@@ -69,12 +54,6 @@ ul.articleList li + li {
   border-radius: 10px;
   border: none;
   margin-top: 24px;
-}
-
-.footer {
-  text-align: center;
-  margin-top: 85px;
-  margin-bottom: 45px;
 }
 
 /* .page {
