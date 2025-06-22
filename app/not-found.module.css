@@ -1,0 +1,20 @@
+.container {
+  margin-top: 100px;
+}
+
+.container .title {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.container .message {
+  text-align: center;
+  margin-top: 35px;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 85px;
+  margin-bottom: 45px;
+}

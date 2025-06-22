@@ -5,6 +5,7 @@ import styles from "./page.module.css";
 import Lottie from "lottie-react";
 import shapes from "@/public/animations/shapes.json";
 import { title } from "process";
+import Link from "next/link";
 
 type Article = {
   id: string;
@@ -79,20 +80,22 @@ export default function Home() {
           <ul className={styles.articleList}>
             {sliceDate.map((Article) => (
               <li key={Article.id} className={styles.articleItem}>
-                <div className="">
-                  <Image
-                    src="/images/sample.jpg"
-                    alt="サンプル画像"
-                    width={300}
-                    height={200}
-                  />
-                </div>
-                <dl className={styles.contect}>
-                  <dt className={styles.newsItemTitle}>{Article.title}</dt>
-                  <dd className={styles.meta}>
-                    {Article.category.name} | {Article.publishedAt}
-                  </dd>
-                </dl>
+                <Link href={`/articles/${Article.id}`}>
+                  <div className="">
+                    <Image
+                      src="/images/sample.jpg"
+                      alt="サンプル画像"
+                      width={300}
+                      height={200}
+                    />
+                  </div>
+                  <dl className={styles.contect}>
+                    <dt className={styles.newsItemTitle}>{Article.title}</dt>
+                    <dd className={styles.meta}>
+                      {Article.category.name} | {Article.publishedAt}
+                    </dd>
+                  </dl>
+                </Link>
               </li>
             ))}
           </ul>

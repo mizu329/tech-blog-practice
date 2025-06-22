@@ -43,7 +43,7 @@ ul.articleList {
   margin-top: 40px;
 }
 
-ul.articleList li {
+ul.articleList li a {
   display: flex;
 }
 
