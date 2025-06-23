@@ -2,14 +2,14 @@ import Image from "next/image";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import styles from "./page.module.css";
-import { getArticles } from "@/app/_libs/microcms";
+// import { getArticles } from "@/app/_libs/microcms";
 import { getArticleDetail } from "@/app/_libs/microcms";
 
-type Props = {
-  params: {
-    slug: string;
-  };
-};
+// type Props = {
+//   params: {
+//     slug: string;
+//   };
+// };
 
 // export default async function Page({ params }: Props) {
 //   const data = await getArticles(params.slug);
@@ -28,9 +28,11 @@ export default async function Page({ params }: { params: { slug: string } }) {
         <h1>{article.title}</h1>
 
         {article.thumbnail ? (
-          <img
+          <Image
             src={article.thumbnail.url}
             alt={article.title}
+            width={220}
+            height={130}
             className={styles.thumbnail}
           />
         ) : (

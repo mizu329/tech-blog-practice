@@ -1,4 +1,3 @@
-import { DEFAULT_MAX_VERSION } from "tls";
 import styles from "./not-found.module.css";
 import Footer from "./components/Footer";
 

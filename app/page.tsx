@@ -30,7 +30,6 @@ import Image from "next/image";
 // ]
 
 export default async function Home() {
-  const name = "Design Code";
   const data = await getArticles();
   console.log(data);
 
