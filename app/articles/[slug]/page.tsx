@@ -32,7 +32,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
             src={article.thumbnail.url}
             alt={article.title}
             width={220}
-            height={130}
             className={styles.thumbnail}
           />
         ) : (
