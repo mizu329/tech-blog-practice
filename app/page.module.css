@@ -24,12 +24,42 @@
   padding: 60px;
 }
 
+@media screen and (max-width: 768px) {
+  .articleWrapper {
+    padding: 45px 40px;
+  }
+}
+
 ul.articleList {
   margin-top: 40px;
 }
 
+ul.articleList dl dt {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
 ul.articleList li a {
   display: flex;
+  gap: 100px;
+}
+
+@media screen and (max-width: 768px) {
+  ul.articleList li a {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+
+ul.articleList li a img {
+  width: 220px;
+}
+
+@media screen and (max-width: 768px) {
+  ul.articleList li a img {
+    width: 100%;
+  }
 }
 
 ul.articleList li + li {

@@ -22,9 +22,24 @@ export default async function Page({ params }: { params: { slug: string } }) {
   console.log(article);
 
   return (
-    <div>
-      <h1>{article.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: article.body }} />
-    </div>
+    <>
+      <Header />
+      <div className={`${styles.articleWrapper} ${styles.inner}`}>
+        <h1>{article.title}</h1>
+
+        {article.thumbnail ? (
+          <img
+            src={article.thumbnail.url}
+            alt={article.title}
+            className={styles.thumbnail}
+          />
+        ) : (
+          <div className={styles.articleThumbnailPlaceholder}>No Image</div>
+        )}
+        <div dangerouslySetInnerHTML={{ __html: article.body }} />
+      </div>
+
+      <Footer />
+    </>
   );
 }

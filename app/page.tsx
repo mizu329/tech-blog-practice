@@ -2,7 +2,9 @@ import styles from "./page.module.css";
 import Link from "next/link";
 import { getArticles } from "@/app/_libs/microcms";
 import { Firstview } from "./components/Firstview";
+import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { formatDate } from "./_libs/utils";
 
 // [
 //   {
@@ -33,6 +35,7 @@ export default async function Home() {
 
   return (
     <>
+      <Header />
       <Firstview />
       <section className={`${styles.description} ${styles.inner}`}>
         <p>WEB関連で気になったトピックをシェアしています。</p>
@@ -62,7 +65,7 @@ export default async function Home() {
                     <img
                       src={article.thumbnail.url}
                       alt={article.title}
-                      className={styles.articleThumbnail}
+                      className={styles.thumbnail}
                     />
                   ) : (
                     <div className={styles.articleThumbnailPlaceholder}>
@@ -71,7 +74,7 @@ export default async function Home() {
                   )}
                   <dl>
                     <dt>{article.title}</dt>
-                    <dd>{article.publishedAt}</dd>
+                    <dd>{formatDate(article.publishedAt)}</dd>
                   </dl>
                 </Link>
               </li>

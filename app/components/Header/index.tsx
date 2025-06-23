@@ -9,13 +9,13 @@ export default function Header() {
         <Link href="/">TeckBlog</Link>
       </div>
       <nav className={styles.nav}>
-        <Link href="/portfolio">Portfolio</Link>
-        <Link href="https://github.com/your-github-username" target="_blank">
+        {/* <Link href="/portfolio">Portfolio</Link> */}
+        <Link href="https://github.com/mizu329" target="_blank">
           <FiGithub />
         </Link>
-        <Link href="/">
+        {/* <Link href="/">
           <FiX />
-        </Link>
+        </Link> */}
       </nav>
     </header>
   );
