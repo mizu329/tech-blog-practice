@@ -1,5 +1,6 @@
 import Link from "next/link";
-// import { FiGithub, FiX } from "react-icons/fi";
+import { FiGithub } from "react-icons/fi";
+// import { FiX } from "react-icons/fi";
 import styles from "./Header.module.css";
 
 export default function Header() {
