@@ -5,6 +5,7 @@ import { Firstview } from "./components/Firstview";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { formatDate } from "./_libs/utils";
+import Image from "next/image";
 
 // [
 //   {
@@ -62,9 +63,11 @@ export default async function Home() {
               <li key={article.id} className={styles.articleItem}>
                 <Link href={`/articles/${article.id}`}>
                   {article.thumbnail ? (
-                    <img
+                    <Image
                       src={article.thumbnail.url}
                       alt={article.title}
+                      width={220}
+                      height={130}
                       className={styles.thumbnail}
                     />
                   ) : (
