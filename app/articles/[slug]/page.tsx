@@ -27,16 +27,30 @@ export default async function Page({ params }: { params: { slug: string } }) {
       <div className={`${styles.articleWrapper} ${styles.inner}`}>
         <h1>{article.title}</h1>
 
-        {article.thumbnail ? (
-          <Image
-            src={article.thumbnail.url}
-            alt={article.title}
-            width={220}
-            className={styles.thumbnail}
-          />
-        ) : (
-          <div className={styles.articleThumbnailPlaceholder}>No Image</div>
-        )}
+        <div
+          className={styles.articleImage}
+          style={{
+            position: "relative",
+            width: "100%",
+            display: "block",
+            aspectRatio: "220 / 130",
+            overflow: "hidden",
+          }}
+        >
+          {article.thumbnail ? (
+            <Image
+              src={article.thumbnail.url}
+              alt={article.title}
+              fill
+              style={{
+                objectFit: "cover",
+              }}
+              className={styles.thumbnail}
+            />
+          ) : (
+            <div className={styles.articleThumbnailPlaceholder}>No Image</div>
+          )}
+        </div>
         <div dangerouslySetInnerHTML={{ __html: article.body }} />
       </div>
 

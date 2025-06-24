@@ -61,19 +61,27 @@ export default async function Home() {
             {data.contents.map((article) => (
               <li key={article.id} className={styles.articleItem}>
                 <Link href={`/articles/${article.id}`}>
-                  {article.thumbnail ? (
-                    <Image
-                      src={article.thumbnail.url}
-                      alt={article.title}
-                      width={220}
-                      height={130}
-                      className={styles.thumbnail}
-                    />
-                  ) : (
-                    <div className={styles.articleThumbnailPlaceholder}>
-                      No Image
-                    </div>
-                  )}
+                  <div
+                    style={{
+                      position: "relative",
+                      width: "220px",
+                      aspectRatio: "220 / 130",
+                    }}
+                  >
+                    {article.thumbnail ? (
+                      <Image
+                        src={article.thumbnail.url}
+                        alt={article.title}
+                        fill
+                        style={{ objectFit: "cover" }}
+                        className={styles.thumbnail}
+                      />
+                    ) : (
+                      <div className={styles.articleThumbnailPlaceholder}>
+                        No Image
+                      </div>
+                    )}
+                  </div>
                   <dl>
                     <dt>{article.title}</dt>
                     <dd>{formatDate(article.publishedAt)}</dd>
