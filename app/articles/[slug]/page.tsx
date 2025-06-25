@@ -2,31 +2,23 @@ import Image from "next/image";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import styles from "./page.module.css";
-// import { getArticles } from "@/app/_libs/microcms";
 import { getArticleDetail } from "@/app/_libs/microcms";
 
-// type Props = {
-//   params: {
-//     slug: string;
-//   };
-// };
-
-// export default async function Page({ params }: Props) {
-//   const data = await getArticles(params.slug);
-
-//   return <>{data.title}</>;
-// }
-
-export default async function Page({ params }: { params: { slug: string } }) {
-  const article = await getArticleDetail(params.slug);
-  console.log(article);
-
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const article = await getArticleDetail(slug);
+  if (!article) {
+    return <div>記事が見つかりませんでした。</div>;
+  }
   return (
     <>
       <Header />
       <div className={`${styles.articleWrapper} ${styles.inner}`}>
         <h1>{article.title}</h1>
-
         <div
           className={styles.articleImage}
           style={{
@@ -42,9 +34,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
               src={article.thumbnail.url}
               alt={article.title}
               fill
-              style={{
-                objectFit: "cover",
-              }}
+              style={{ objectFit: "cover" }}
               className={styles.thumbnail}
             />
           ) : (
@@ -53,7 +43,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
         </div>
         <div dangerouslySetInnerHTML={{ __html: article.body }} />
       </div>
-
       <Footer />
     </>
   );
