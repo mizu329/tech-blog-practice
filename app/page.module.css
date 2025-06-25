@@ -52,8 +52,10 @@ ul.articleList li a {
   }
 }
 
-ul.articleList li a Image {
-  width: 220px;
+@media screen and (max-width: 768px) {
+  ul.articleList .articleImage {
+    width: 100% !important;
+  }
 }
 
 @media screen and (max-width: 768px) {

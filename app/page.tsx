@@ -62,10 +62,13 @@ export default async function Home() {
               <li key={article.id} className={styles.articleItem}>
                 <Link href={`/articles/${article.id}`}>
                   <div
+                    className={styles.articleImage}
                     style={{
                       position: "relative",
                       width: "220px",
+                      display: "block",
                       aspectRatio: "220 / 130",
+                      overflow: "hidden",
                     }}
                   >
                     {article.thumbnail ? (
@@ -73,7 +76,9 @@ export default async function Home() {
                         src={article.thumbnail.url}
                         alt={article.title}
                         fill
-                        style={{ objectFit: "cover" }}
+                        style={{
+                          objectFit: "cover",
+                        }}
                         className={styles.thumbnail}
                       />
                     ) : (
