@@ -68,6 +68,12 @@ ul.articleList li + li {
   margin-top: 25px;
 }
 
+.articleMeta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .contact {
   padding-top: 80px;
   text-align: center;

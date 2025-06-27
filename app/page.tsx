@@ -88,7 +88,7 @@ export default async function Home() {
                       </div>
                     )}
                   </div>
-                  <dl>
+                  <dl className={styles.articleMeta}>
                     <dt>{article.title}</dt>
                     <dd>{formatDate(article.publishedAt)}</dd>
                   </dl>
